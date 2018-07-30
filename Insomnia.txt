@@ -1,0 +1,49 @@
+#include<stdio.h>
+int main()
+{
+   int n,copy=0,copy2=0,c=0,t=0,dig=0;
+   scanf("%d\n",&n);//no. of test cases
+   int a[n];//no of inputs array
+   int i,j,k,l;
+   for(i=0;i<n;i++)//inputting insomnia numbers
+   scanf("%d ",&a[i]);
+   int d[]={0,0,0,0,0,0,0,0,0,0};//array for digit count
+   for(j=0;j<n;j++)//for each input
+   {
+     for(k=1;k<=106;k++)//multiples of number
+     {
+        if(d[0]>0&&d[1]>0&&d[2]>0&&d[3]>0&&d[4]>0&&d[5]>0&&d[6]>0&&d[7]>0&&d[8]>0&&d[9]>0)
+        break;
+        copy=a[j]*k;
+        copy2=copy;
+        while(copy>0)
+        {
+          dig=copy%10;
+          for(l=0;l<=9;l++)
+          {
+          if(dig==l)
+          d[l]++;
+          }
+          copy=copy/10;
+        }
+     }
+     for(i=0;i<=9;i++)
+     {
+      if(d[i]==0)
+      {
+        c++;
+       printf("Case #%d: INSOMNIA\n",(j+1));
+       break;
+      }
+    }
+   if(c==0)
+   printf("Case #%d: %d\n",(j+1),copy2);
+   for(i=0;i<=9;i++)
+   d[i]=0;
+   c=0;
+   t=0;
+   }
+   return 0;
+}
+
+

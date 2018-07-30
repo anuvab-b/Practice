@@ -1,0 +1,22 @@
+int main()
+{
+int n,i,j;
+scanf("%d\n",&n);
+int inp[n];
+for(i=0;i<n;i++)
+scanf("%d\n",&inp[i]);
+int query;
+scanf("%d\n",&query);
+int q[query];
+for(j=0;j<query;j++)
+scanf("%d\n",&q[j]);
+for(i=0;i<n;i++)
+{
+ for j=0;j<query;j++)
+  {
+ if(strcmp(inp[i],q[j])==0)
+ c++;
+   }
+printf("%d\n",c);
+c=0;
+}

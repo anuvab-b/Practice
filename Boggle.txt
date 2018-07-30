@@ -1,0 +1,64 @@
+import java.util.*;
+public class TestClass
+{
+  public static void main(String args[])
+  {
+    Scanner sc=new Scanner(System.in);
+    int t=sc.nextInt();
+    for(int k1=1;k1<=t;k1++)
+    {
+      int num=sc.nextInt();
+      String a[]=new String[num];
+      for(int i=0;i<num;i++)
+        a[i]=sc.next();
+      int m=sc.nextInt();
+      int n=sc.nextInt();
+      String alph="";
+      char alp[][]=new char[m][n];
+      for(int i=0;i<m;i++)
+      {
+        for(int j=0;j<n;j++)
+        {
+          alp[i][j]=sc.next().charAt(0);
+          alph=alph+alp[i][j];
+        }
+      }
+      int l=alph.length();
+      for (int i = 0; i < l; i ++)
+        {
+        String result="";
+            for (int j = i; j < l; j ++)
+            {
+                for (int k = i; k <= j; k++)
+                {
+                    result += alph.charAt(k);
+                    permute(result,0,result.length()-1);
+                  }
+                }
+            }
+      }
+    }
+public static void permute(String str, int l, int r)
+    {
+        if (l == r)
+            System.out.println(str);
+        else
+        {
+            for (int i = l; i <= r; i++)
+            {
+                str = swap(str,l,i);
+                permute(str, l+1, r);
+                str = swap(str,l,i);
+            }
+        }
+}
+public static String swap(String a, int i, int j)
+    {
+        char temp;
+        char[] charArray = a.toCharArray();
+        temp = charArray[i] ;
+        charArray[i] = charArray[j];
+        charArray[j] = temp;
+        return String.valueOf(charArray);
+}
+}
